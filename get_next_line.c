@@ -6,7 +6,7 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 00:00:17 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/24 01:20:15 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/28 18:22:56 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,57 +26,59 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-static char		*ft_clear(char *s)
-{
-	int			i;
+// char		*ft_clear(char *s)
+// {
+// 	int			i;
 
-	i = 0;
-	while (s[i])
-	{
-		s[i] = '\0';
-		i++;
-	}
-	return (s);
-}
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		s[i] = '\0';
+// 		i++;
+// 	}
+// 	return (s);
+// }
 
-static char		*ft_newline(size_t size)
-{
-	char	*str;
-	size_t	i;
+// char		*ft_newline(size_t size)
+// {
+// 	char	*str;
+// 	size_t	i;
 
-	i = 0;
-	if ((str = (char *)malloc(size)) == NULL)
-		return (NULL);
-	while (i < size)
-	{
-		str[i] = '\0';
-		i++;
-	}
-	return (str);
-}
+// 	i = 0;
+// 	if ((str = (char *)malloc(size)) == NULL)
+// 		return (NULL);
+// 	while (i < size)
+// 	{
+// 		str[i] = '\0';
+// 		i++;
+// 	}
+// 	return (str);
+//}
 
-static char		*check_end_of_line(char *end_of_line, char **line)
+char		*check_end_of_line(char **end_of_line, char **line)
 {
 	char		*pointer_slash_n;
 
 	pointer_slash_n = NULL;
-	if (*end_of_line != 0)
-		if((pointer_slash_n = ft_strchr(end_of_line, '\n')))
+	if (*end_of_line)
+		if((pointer_slash_n = ft_strchr(*end_of_line, '\n')))
 		{
 			*pointer_slash_n = '\0';
-			if ((*line = ft_strdup(end_of_line)) == NULL) //Does it here need checking for malloc?
+			if (!(*line = ft_strdup(*end_of_line))) //Does it here need checking for malloc?
 				return (NULL);
 			pointer_slash_n++;
-			ft_strcpy(end_of_line, pointer_slash_n);
+			ft_strcpy(*end_of_line, pointer_slash_n);
 		}
 		else
 		{
-			if ((*line = ft_strdup(end_of_line)) == NULL) //Does it here need checking for malloc?
+			if (!(*line = ft_strdup(*end_of_line))) //Does it here need checking for malloc?
 				return (NULL);
-			ft_clear(end_of_line);
+			// ft_clear(*end_of_line);
+			free (*end_of_line);
+			end_of_line = 0;
 		}
 	else
-		*line = ft_newline(1);
+		*line = ft_strdup("");
 	return (pointer_slash_n);
 }
 
@@ -88,7 +90,10 @@ int		get_next_line(int fd, char **line)
 	char			*pointer_slash_n;
 	char			*str;
 
-	pointer_slash_n = check_end_of_line(end_of_line, line);
+	if ((read(fd, buf, 0) == -1) || fd < 0 || BUFFER_SIZE <= 0 || !(*line = (char *)malloc(sizeof(char))))
+		return (-1);
+	**line = '\0';
+	pointer_slash_n = check_end_of_line(&end_of_line, line);
 	while (!pointer_slash_n && (for_read = read(fd, buf, BUFFER_SIZE)))
 	{
 		buf[for_read] = '\0';
@@ -102,10 +107,11 @@ int		get_next_line(int fd, char **line)
 		*line = ft_strjoin(*line, buf);
 		free(str);
 	}
-	if (for_read || ft_strlen(end_of_line) || ft_strlen(*line))
-		return (1);
-	else
-		return (0);
+	return ((pointer_slash_n || for_read) ? 1 : 0);
+	// if (for_read || ft_strlen(end_of_line) || ft_strlen(*line))
+	// 	return (1);
+	// else
+	// 	return (0);
 }
 
 // int		main(void)
@@ -117,4 +123,24 @@ int		get_next_line(int fd, char **line)
 // 	get_next_line(fd, &line);
 // 	printf("%s\n", line);
 // 	return (0);
+// }
+
+// int main(void)
+// {
+// 	int		fd;
+// 	int		i;
+// 	char	*line;
+
+// 	printf("--------------------start-----------------------\n");
+// 	fd = open("file.txt", O_RDONLY);
+// 	printf("fd_%d\n", fd);
+// 	while ((i = get_next_line(fd, &line)))
+// 	{
+// 		printf("line_%s %i\n", line, i);
+// 	free (line);
+// 	}
+// 	printf("line_%s %i\n", line, i);
+// free (line);
+// 	printf("~~~~~~~~~~~~~~~~~~~~end~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+// //	while (1);
 // }

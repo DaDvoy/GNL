@@ -6,7 +6,7 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 23:46:08 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/24 00:01:13 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/28 00:56:43 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# define BUFFER_SIZE 32
+// # define BUFFER_SIZE 2048
 
-static char		*ft_clear(char *s);
-static char		*ft_newline(size_t size);
-static char		*check_end_of_line(char *end_of_line, char **line);
+// char			*ft_clear(char *s);
+// char			*ft_newline(size_t size);
+char			*check_end_of_line(char **end_of_line, char **line);
 int				get_next_line(int fd, char **line);
 char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
