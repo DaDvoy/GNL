@@ -6,7 +6,7 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 00:00:17 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/28 18:22:56 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/30 00:16:05 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		get_next_line(int fd, char **line)
 			*pointer_slash_n = '\0';
 			pointer_slash_n++;
 			end_of_line = ft_strdup(pointer_slash_n);
+			// ft_strlcpy(end_of_line, ++pointer_slash_n, BUFFER_SIZE);
 		}
 		str = *line;
 		*line = ft_strjoin(*line, buf);
@@ -132,7 +133,7 @@ int		get_next_line(int fd, char **line)
 // 	char	*line;
 
 // 	printf("--------------------start-----------------------\n");
-// 	fd = open("file.txt", O_RDONLY);
+// 	fd = open("file2.txt", O_RDONLY);
 // 	printf("fd_%d\n", fd);
 // 	while ((i = get_next_line(fd, &line)))
 // 	{
@@ -143,4 +144,19 @@ int		get_next_line(int fd, char **line)
 // free (line);
 // 	printf("~~~~~~~~~~~~~~~~~~~~end~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 // //	while (1);
+// }
+
+// int main(void)
+// {
+// 	int		fd;
+// 	int		i;
+// 	char	*line;
+
+// 	printf("--------------------start-----------------------\n");
+// 	fd = open("file2.txt", O_RDONLY);
+// 	printf("fd_%d\n", fd);
+// 	while ((i = get_next_line(fd, &line)))
+// 	{
+// 		printf("%s", line);
+// 	}
 // }

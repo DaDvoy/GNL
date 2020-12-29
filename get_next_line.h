@@ -6,7 +6,7 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 23:46:08 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/28 00:56:43 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/30 00:16:17 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-// # define BUFFER_SIZE 2048
+//# define BUFFER_SIZE 1500
 
 // char			*ft_clear(char *s);
 // char			*ft_newline(size_t size);
