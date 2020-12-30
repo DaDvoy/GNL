@@ -17,10 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-//# define BUFFER_SIZE 1500
+//# define BUFFER_SIZE 1
 
-// char			*ft_clear(char *s);
-// char			*ft_newline(size_t size);
 char			*check_end_of_line(char **end_of_line, char **line);
 int				get_next_line(int fd, char **line);
 char			*ft_strdup(const char *s1);
