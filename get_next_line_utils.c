@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    get_next_line_utils.c                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 23:54:55 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/07 23:58:01 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/31 19:17:11 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char		*ft_strchr(const char *s, int c)
 		return (char *)(s + y);
 	return (NULL);
 }
-
 
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

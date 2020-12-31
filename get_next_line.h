@@ -6,21 +6,18 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 23:46:08 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/30 00:16:17 by lmushroo         ###   ########.fr       */
+/*   Updated: 2020/12/31 19:30:15 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-//# define BUFFER_SIZE 1500
+# include <stdio.h>
 
-// char			*ft_clear(char *s);
-// char			*ft_newline(size_t size);
 char			*check_end_of_line(char **end_of_line, char **line);
 int				get_next_line(int fd, char **line);
 char			*ft_strdup(const char *s1);
