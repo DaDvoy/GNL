@@ -6,7 +6,7 @@
 /*   By: lmushroo <lmushroo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 23:46:08 by lmushroo          #+#    #+#             */
-/*   Updated: 2020/12/31 19:30:15 by lmushroo         ###   ########.fr       */
+/*   Updated: 2021/01/01 00:10:33 by lmushroo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
 
 char			*check_end_of_line(char **end_of_line, char **line);
 int				get_next_line(int fd, char **line);
